@@ -15,11 +15,14 @@ class MainActivity : AppCompatActivity() {
 
         /**
          * Logical Error in Decimal to Hexadecimal Conversion - Fixed
-         * Binary Diff Value when > 10.000 - Fixed
-         * HexToDecimal - Add ABCDEF - Not Fixed
+         * Binary Diff Value when > 10.000 - Fixed ( if (base == || 2 or base == || 16) )
+         * HexToDecimal - Add ABCDEF - Fixed
+         * Can't take Large Binary Numbers as input - Not Fixed (Took Long and used Strings to append)
 
          * Not Compatible for negative numbers - Not Fixed (Should try 1s and 2s complement)
-         * Can't take Large Binary Numbers as input - Not Fixed (Try Converting to Long)
+         *
+         * decimalTo
+
          **/
 
         spFrom.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -118,16 +121,22 @@ class MainActivity : AppCompatActivity() {
 
 //Convert Decimal System To Other Base System
 private fun decimalToBase(number: String, base: Int): String {
-    var n = number.toInt()
-    var baseResult: String = ""
-    var remString: String = ""
+    var n = number.toLong()
     var i: Int = 1
 
-    while (n != 0) {
-        remString = (n % base).toString()
+    var baseResultString: String = ""
+    var remString: String = ""
 
-        if(base > 10) {
-            when(remString) {
+    var baseResult: Long = 0L
+    var remainder: Long = 0L
+
+    var result: String =""
+
+    while (n != 0L) {
+
+        if (n > 0) {
+            remString = (n % base).toString()
+            when (remString) {
                 "10" -> remString = "A"
                 "11" -> remString = "B"
                 "12" -> remString = "C"
@@ -135,14 +144,26 @@ private fun decimalToBase(number: String, base: Int): String {
                 "14" -> remString = "E"
                 "15" -> remString = "F"
             }
-        }
 
-        n /= base
-        baseResult += remString
-        i *= 10
+            n /= base
+            baseResultString += remString
+            i *= 10
+
+            result = baseResultString.reversed()
+        } else {
+
+            remainder = n % base
+            n /= base
+            baseResult += (remainder * i)
+            i *= 10
+
+            result = baseResult.toString()
+        }
     }
-    return baseResult.reversed()
+
+    return result
 }
+
 
 private fun baseToDecimal (base: Int, number: String): String {
     var n: String = number
@@ -168,7 +189,10 @@ private fun baseToDecimal (base: Int, number: String): String {
         baseResult += (lastDigit * base.toDouble().pow(i.toDouble()))
         i += 1
     }
+
     return baseResult.toInt().toString()
 }
+
+
 
 
