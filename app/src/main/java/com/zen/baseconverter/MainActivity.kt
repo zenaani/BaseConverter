@@ -1,308 +1,124 @@
 package com.zen.baseconverter
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import com.zen.baseconverter.NumberFormatter.binaryToDecimal
+import com.zen.baseconverter.NumberFormatter.decimalToAny
+import com.zen.baseconverter.NumberFormatter.hexToDecimal
+import com.zen.baseconverter.NumberFormatter.octalToDecimal
+import com.zen.baseconverter.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
+    companion object {
+        const val DECIMAL = "Decimal"
+        const val BINARY = "Binary"
+        const val OCTAL = "Octal"
+        const val HEXADECIMAL = "Hexadecimal"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         /***
-            Update Code compatible for negative numbers
-            1s - 2s complement
-            Take binary as a string. Strip(1..4) -> change to hex -> change to deccimal
+        Update Code compatible for negative numbers
+        1s - 2s complement
+        Take binary as a string. Strip(1..4) -> change to hex -> change to deccimal
          ***/
 
         //Logical Error in Decimal to Hexadecimal Conversion - Fixed
         //Binary Diff Value when > 10.000 - Fixed
         //HexToDecimal - Add ABCDEF
 
-        spFrom.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                Toast.makeText(this@MainActivity, "You selected ${adapterView?.getItemAtPosition(position).toString()}", Toast.LENGTH_SHORT).show()
-
-                when {
-                    adapterView?.getItemAtPosition(position).toString() == "Decimal" -> {
-                        Toast.makeText(this@MainActivity, "Shit! You got the decimal logic brah!", Toast.LENGTH_LONG).show()
-
-                        btnConvert.setOnClickListener {
-                            val number = etNumber.text.toString().toInt()
-
-                            val decimalResult = number
-                            tvDecimal.text = decimalResult.toString()
-
-                            val binaryResult = decimalToAny(number,2)
-                            tvBinary.text = binaryResult
-
-                            val octalResult = decimalToAny(number, 8)
-                            tvOctal.text = octalResult
-
-                            val hexResult = decimalToAny(number, 16)
-                            tvHexadecimal.text = hexResult
-                        }
+        binding.spFrom.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                adapterView: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                toast("You selected ${adapterView?.getItemAtPosition(position).toString()}")
+                when (adapterView?.getItemAtPosition(position).toString()) {
+                    DECIMAL -> {
+                        toast("Shit! You got the decimal logic brah!")
+                        binding.btnConvert.setOnClickListener { printResult(DECIMAL) }
+                    }
+                    BINARY -> {
+                        toast("Hell Yeah! You made it to binary")
+                        binding.btnConvert.setOnClickListener { printResult(BINARY) }
 
                     }
-                    adapterView?.getItemAtPosition(position).toString() == "Binary" -> {
-                        Toast.makeText(this@MainActivity, "Hell Yeah! You made it to binary", Toast.LENGTH_LONG).show()
-
-                        btnConvert.setOnClickListener {
-                            val number = etNumber.text.toString().toInt()
-
-                            val decimalResult = binaryToDecimal(number)
-                            tvDecimal.text = decimalResult.toString()
-
-                            val binaryResult = number
-                            tvBinary.text = binaryResult.toString()
-
-                            val octalResult = decimalToAny(decimalResult, 8)
-                            tvOctal.text = octalResult
-
-                            val hexResult = decimalToAny(decimalResult, 16)
-                            tvHexadecimal.text = hexResult
-                        }
+                    OCTAL -> {
+                        toast("Cool! Its Octal")
+                        binding.btnConvert.setOnClickListener { printResult(OCTAL) }
 
                     }
-                    adapterView?.getItemAtPosition(position).toString() == "Octal" -> {
-                        Toast.makeText(this@MainActivity, "Cool! Its Octal", Toast.LENGTH_LONG).show()
-
-                        btnConvert.setOnClickListener {
-                            val number = etNumber.text.toString().toInt()
-
-                            val decimalResult = octalToDecimal(number)
-                            tvDecimal.text = decimalResult.toString()
-
-                            val binaryResult = decimalToAny(decimalResult, 2)
-                            tvBinary.text = binaryResult
-
-                            val octalResult = decimalToAny(decimalResult, 8)
-                            tvOctal.text = octalResult
-
-                            val hexResult = decimalToAny(decimalResult, 16)
-                            tvHexadecimal.text = hexResult
-                        }
-
-                    }
-                    adapterView?.getItemAtPosition(position).toString() == "Hexadecimal" -> {
-                        Toast.makeText(this@MainActivity, "Finally you did it!!!!! Dens Keli", Toast.LENGTH_LONG).show()
-
-                        btnConvert.setOnClickListener {
-                            val number = etNumber.text.toString().toInt()
-
-                            val decimalResult = hexToDecimal(number)
-                            tvHexadecimal.text = decimalResult.toString()
-
-                            val binaryResult = decimalToAny(decimalResult, 2)
-                            tvBinary.text = binaryResult
-
-                            val octalResult = decimalToAny(decimalResult, 8)
-                            tvOctal.text = octalResult
-
-                            val hexResult = decimalToAny(decimalResult, 16)
-                            tvHexadecimal.text = hexResult
-                        }
+                    HEXADECIMAL -> {
+                        toast("Finally you did it!!!!! Dens Keli")
+                        binding.btnConvert.setOnClickListener { printResult(HEXADECIMAL) }
 
                     }
                     else -> {
-                        Toast.makeText(this@MainActivity, "I guess no one's gonna see this", Toast.LENGTH_LONG).show()
+                        toast("I guess no one's gonna see this")
                     }
                 }
-
             }
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
-            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
-
-        /***
-
-        btnConvert.setOnClickListener {
-            val number = etNumber.text.toString().toInt()
-
-            val decimal = number
-            tvDecimal.text = decimal.toString()
-
-            val binaryResult = decimalToBinary(number)
-            tvBinary.text = binaryResult.toString()
-
-            val octalResult = decimalToOctal(number)
-            tvOctal.text = octalResult.toString()
-
-            val hexResult = decimalToHex(number)
-            tvHexadecimal.text = hexResult
-        }
-
-        ***/
-
     }
 
-    }
-
-    //Convert Decimal System To Other Base System
-
-    private fun decimalToAny(number: Int, base: Int): String {
-        var n = number
-        var baseResult: String = ""
-        var remString: String = ""
-        var i: Int = 1
-
-        while (n != 0) {
-            remString = (n % base).toString()
-
-            if(base > 10) {
-                when(remString) {
-                    "10" -> remString = "A"
-                    "11" -> remString = "B"
-                    "12" -> remString = "C"
-                    "13" -> remString = "D"
-                    "14" -> remString = "E"
-                    "15" -> remString = "F"
+    fun printResult(callerType: String) {
+        val number = binding.etNumber.text.toString().toInt()
+        when (callerType) {
+            DECIMAL -> {
+                binding.apply {
+                    tvDecimal.text = number.toString()
+                    tvBinary.text = decimalToAny(number, 2)
+                    tvOctal.text = decimalToAny(number, 8)
+                    tvHexadecimal.text = decimalToAny(number, 16)
                 }
             }
-
-            n /= base
-            baseResult += remString
-            i *= 10
-        }
-
-        return baseResult.reversed()
-    }
-
-    /**
-    private fun decimalToBinary(number: Int): Long {
-        var n = number
-        var binaryNumber: Long = 0
-        var remainder: Int
-        var i: Int = 1
-
-        while (n != 0) {
-            remainder = n % 2
-            n /= 2
-            binaryNumber += (remainder * i).toLong()
-            i *= 10
-        }
-
-        return binaryNumber
-    }
-
-
-    private fun decimalToOctal(number: Int): Long {
-        var n = number
-        var octalNumber: Long = 0
-        var remainder: Int
-        var i: Int = 1
-
-        while (n != 0) {
-            remainder = n % 8
-            n /= 8
-            octalNumber += (remainder * i).toLong()
-            i *= 10
-        }
-
-        return octalNumber
-    }
-
-
-    private fun decimalToHex(number: Int): String {
-        var n = number
-        var hexNumber: String = ""
-        var remString: String = ""
-        var i: Int = 0
-
-        while (n !=0) {
-            remString = (n % 16).toString()
-
-            when (remString) {
-                "10" -> remString = "A"
-                "11" -> remString = "B"
-                "12" -> remString = "C"
-                "13" -> remString = "D"
-                "14" -> remString = "E"
-                "15" -> remString = "F"
+            BINARY -> {
+                binding.apply {
+                    val decimalResult = binaryToDecimal(number)
+                    tvDecimal.text = decimalResult.toString()
+                    tvBinary.text = number.toString()
+                    tvOctal.text = decimalToAny(decimalResult, 8)
+                    tvHexadecimal.text = decimalToAny(decimalResult, 16)
+                }
             }
-
-            n /= 16
-            hexNumber += remString
-            i *= 10
+            OCTAL -> {
+                binding.apply {
+                    val decimalResult = octalToDecimal(number)
+                    tvDecimal.text = decimalResult.toString()
+                    tvBinary.text = decimalToAny(decimalResult, 2)
+                    tvOctal.text = decimalToAny(decimalResult, 8)
+                    tvHexadecimal.text = decimalToAny(decimalResult, 16)
+                }
+            }
+            HEXADECIMAL -> {
+                binding.apply {
+                    val decimalResult = hexToDecimal(number)
+                    tvHexadecimal.text = decimalResult.toString()
+                    tvBinary.text = decimalToAny(decimalResult, 2)
+                    tvOctal.text = decimalToAny(decimalResult, 8)
+                    tvHexadecimal.text = decimalToAny(decimalResult, 16)
+                }
+            }
         }
-
-        return hexNumber.reversed()
     }
+}
 
-     **/
-
-
-    //Convert Other Base System to Decimal System
-/**
-    private fun anyToDecimal(number: Int, base: Int): String {
-        var n: Int = number
-        var baseResult: Double = 0.0
-        var i: Int = 0
-        var lastDigit: Int = 0
-        
-        while (n > 0) {
-            lastDigit = n % 10
-            baseResult += (lastDigit * Math.pow(base.toDouble(), i.toDouble()) )
-            n /= 10
-            i += 1
-        }
-        
-        return baseResult.toString()
-    } **/
-
-    private fun binaryToDecimal(number: Int): Int {
-        var n: Int = number
-        var decimalNumber: Double = 0.0
-        var i: Int = 0
-        var lastDigit: Int = 0
-
-        while (n > 0) {
-            lastDigit = n % 10
-            decimalNumber += (lastDigit * Math.pow(2.toDouble() , i.toDouble()) )
-            n /= 10
-            i += 1
-        }
-
-        return decimalNumber.toInt()
-    }
-
-
-    private fun octalToDecimal(number: Int): Int {
-        var n: Int = number
-        var decimalNumber: Double = 0.0
-        var i: Int = 0
-        var lastDigit: Int = 0
-
-        while (n > 0) {
-            lastDigit = n % 10
-            decimalNumber += (lastDigit * Math.pow(8.toDouble(), i.toDouble()))
-            n /= 10
-            i += 1
-        }
-
-        return decimalNumber.toInt()
-    }
-
-    private fun hexToDecimal(number: Int): Int {
-        var n: Int = number
-        var decimalNumber: Double = 0.0
-        var i: Int = 0
-        var lastDigit: Int = 0
-
-        while (n > 0) {
-            lastDigit = n % 10
-            decimalNumber += (lastDigit * Math.pow(16.toDouble(), i.toDouble()))
-            n /= 10
-            i += 1
-        }
-
-        return decimalNumber.toInt()
-    }
+fun Context.toast(message: CharSequence) {
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+}
 
