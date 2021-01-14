@@ -41,22 +41,6 @@ class MainActivity : AppCompatActivity() {
                             addToBackStack(null)
                             commit()
                         }
-
-                        btnConvert.setOnClickListener {
-                            val number = etNumber.text.toString()
-
-                            tvDecimal.text = number
-
-                            val binaryResult = NumberFormatter.decimalToBase(number, 2)
-                            tvBinary.text = binaryResult
-
-                            val octalResult = NumberFormatter.decimalToBase(number, 8)
-                            tvOctal.text = octalResult
-
-                            val hexResult = NumberFormatter.decimalToBase(number, 16)
-                            tvHexadecimal.text = hexResult
-                        }
-
                     }
                     "Binary" -> {
                         Toast.makeText(this@MainActivity, "Hell Yeah! You made it to binary", Toast.LENGTH_LONG).show()

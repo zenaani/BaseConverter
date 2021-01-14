@@ -52,6 +52,23 @@ class DecimalFragment : Fragment(R.layout.fragment_decimal) {
         ivNine.setOnClickListener {
             appendOnClick("9")
         }
+
+        ivEqualTo.setOnClickListener {
+
+            val number = etNumber.text.toString()
+
+            (activity as MainActivity).tvDecimal.text = number
+
+            val binaryResult = NumberFormatter.decimalToBase(number, 2)
+            (activity as MainActivity).tvBinary.text = binaryResult
+
+            val octalResult = NumberFormatter.decimalToBase(number, 8)
+            (activity as MainActivity).tvOctal.text = octalResult
+
+            val hexResult = NumberFormatter.decimalToBase(number, 16)
+            (activity as MainActivity).tvHexadecimal.text = hexResult
+
+        }
     }
 
     private fun appendOnClick (string: String) {
