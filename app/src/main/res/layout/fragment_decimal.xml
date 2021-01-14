@@ -8,9 +8,13 @@
 
     <Button
         android:id="@+id/ivOne"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/btn_number"
         android:text="1"
+        android:textSize="24sp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginVertical="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ivTwo"
         app:layout_constraintHorizontal_bias="0.5"
@@ -18,9 +22,13 @@
 
     <Button
         android:id="@+id/ivTwo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/btn_number"
         android:text="2"
+        android:textSize="24sp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginVertical="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ivThree"
         app:layout_constraintHorizontal_bias="0.5"
@@ -28,93 +36,122 @@
 
     <Button
         android:id="@+id/ivThree"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/btn_number"
         android:text="3"
+        android:textSize="24sp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginVertical="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ivZero"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/ivTwo" />
 
     <Button
         android:id="@+id/ivFour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/btn_number"
         android:text="4"
+        android:textSize="24sp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginVertical="15dp"
         app:layout_constraintBottom_toTopOf="@+id/ivOne"
-        app:layout_constraintEnd_toStartOf="@+id/ivFive"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/ivOne"
+        app:layout_constraintStart_toStartOf="@+id/ivOne" />
 
     <Button
         android:id="@+id/ivFive"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/btn_number"
         android:text="5"
+        android:textSize="24sp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginVertical="15dp"
         app:layout_constraintBottom_toTopOf="@+id/ivTwo"
-        app:layout_constraintEnd_toStartOf="@+id/ivSix"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ivFour" />
+        app:layout_constraintEnd_toEndOf="@+id/ivTwo"
+        app:layout_constraintStart_toStartOf="@+id/ivTwo" />
 
     <Button
         android:id="@+id/ivSix"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/btn_number"
         android:text="6"
+        android:textSize="24sp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginVertical="15dp"
         app:layout_constraintBottom_toTopOf="@+id/ivThree"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ivFive" />
+        app:layout_constraintEnd_toEndOf="@+id/ivThree"
+        app:layout_constraintStart_toStartOf="@+id/ivThree" />
 
     <Button
         android:id="@+id/ivSeven"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/btn_number"
         android:text="7"
+        android:textSize="24sp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginVertical="15dp"
         app:layout_constraintBottom_toTopOf="@+id/ivFour"
-        app:layout_constraintEnd_toStartOf="@+id/ivEight"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/ivFour"
+        app:layout_constraintStart_toStartOf="@+id/ivFour" />
 
     <Button
         android:id="@+id/ivEight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/btn_number"
         android:text="8"
+        android:textSize="24sp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginVertical="15dp"
         app:layout_constraintBottom_toTopOf="@+id/ivFive"
-        app:layout_constraintEnd_toStartOf="@+id/ivNine"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ivSeven" />
+        app:layout_constraintEnd_toEndOf="@+id/ivFive"
+        app:layout_constraintStart_toStartOf="@+id/ivFive" />
 
     <Button
         android:id="@+id/ivNine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/btn_number"
         android:text="9"
+        android:textSize="24sp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginVertical="15dp"
         app:layout_constraintBottom_toTopOf="@+id/ivSix"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ivEight" />
+        app:layout_constraintEnd_toEndOf="@+id/ivSix"
+        app:layout_constraintStart_toStartOf="@+id/ivSix" />
 
     <Button
         android:id="@+id/ivZero"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/btn_number"
         android:text="0"
-        app:layout_constraintBottom_toTopOf="@+id/ivEight"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginVertical="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ivThree" />
 
     <Button
-        android:id="@+id/ivClear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Clear"
-        app:layout_constraintBottom_toBottomOf="@+id/ivOne"
-        app:layout_constraintBottom_toTopOf="@+id/ivNine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ivZero" />
-
+        android:id="@+id/ivEqualTo"
+        android:layout_width="75dp"
+        android:layout_height="165dp"
+        android:layout_marginBottom="1dp"
+        android:background="@drawable/btn_number"
+        android:text="="
+        android:textSize="24sp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginVertical="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/ivZero"
+        app:layout_constraintEnd_toEndOf="@+id/ivZero"
+        app:layout_constraintStart_toStartOf="@+id/ivZero" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,6 +24,9 @@ class MainActivity : AppCompatActivity() {
 
          **/
 
+        val decimalFragment = DecimalFragment()
+        val binaryFragment = BinaryFragment()
+
         spFrom.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 Toast.makeText(this@MainActivity, "You selected ${adapterView?.getItemAtPosition(position).toString()}", Toast.LENGTH_SHORT).show()
@@ -33,18 +36,24 @@ class MainActivity : AppCompatActivity() {
                     "Decimal" -> {
                         Toast.makeText(this@MainActivity, "Shit! You got the decimal logic brah!", Toast.LENGTH_LONG).show()
 
+                        supportFragmentManager.beginTransaction().apply {
+                            replace(R.id.flFragment, decimalFragment)
+                            addToBackStack(null)
+                            commit()
+                        }
+
                         btnConvert.setOnClickListener {
                             val number = etNumber.text.toString()
 
                             tvDecimal.text = number
 
-                            val binaryResult = decimalToBase(number, 2)
+                            val binaryResult = NumberFormatter.decimalToBase(number, 2)
                             tvBinary.text = binaryResult
 
-                            val octalResult = decimalToBase(number, 8)
+                            val octalResult = NumberFormatter.decimalToBase(number, 8)
                             tvOctal.text = octalResult
 
-                            val hexResult = decimalToBase(number, 16)
+                            val hexResult = NumberFormatter.decimalToBase(number, 16)
                             tvHexadecimal.text = hexResult
                         }
 
@@ -52,18 +61,24 @@ class MainActivity : AppCompatActivity() {
                     "Binary" -> {
                         Toast.makeText(this@MainActivity, "Hell Yeah! You made it to binary", Toast.LENGTH_LONG).show()
 
+                        supportFragmentManager.beginTransaction().apply {
+                            replace(R.id.flFragment, binaryFragment)
+                            addToBackStack(null)
+                            commit()
+                        }
+
                         btnConvert.setOnClickListener {
                             val number = etNumber.text.toString()
 
-                            val decimalResult = baseToDecimal(2, number)
+                            val decimalResult = NumberFormatter.baseToDecimal(2, number)
                             tvDecimal.text = decimalResult
 
                             tvBinary.text = number
 
-                            val octalResult = decimalToBase(decimalResult, 8)
+                            val octalResult = NumberFormatter.decimalToBase(decimalResult, 8)
                             tvOctal.text = octalResult
 
-                            val hexResult = decimalToBase(decimalResult, 16)
+                            val hexResult = NumberFormatter.decimalToBase(decimalResult, 16)
                             tvHexadecimal.text = hexResult
                         }
 
@@ -74,15 +89,15 @@ class MainActivity : AppCompatActivity() {
                         btnConvert.setOnClickListener {
                             val number = etNumber.text.toString()
 
-                            val decimalResult = baseToDecimal(8, number)
+                            val decimalResult = NumberFormatter.baseToDecimal(8, number)
                             tvDecimal.text = decimalResult
 
-                            val binaryResult = decimalToBase(decimalResult, 2)
+                            val binaryResult = NumberFormatter.decimalToBase(decimalResult, 2)
                             tvBinary.text = binaryResult
 
                             tvOctal.text = number
 
-                            val hexResult = decimalToBase(decimalResult, 16)
+                            val hexResult = NumberFormatter.decimalToBase(decimalResult, 16)
                             tvHexadecimal.text = hexResult
                         }
 
@@ -93,13 +108,13 @@ class MainActivity : AppCompatActivity() {
                         btnConvert.setOnClickListener {
                             val number = etNumber.text.toString()
 
-                            val decimalResult = baseToDecimal(16, number)
+                            val decimalResult = NumberFormatter.baseToDecimal(16, number)
                             tvDecimal.text = decimalResult
 
-                            val binaryResult = decimalToBase(decimalResult, 2)
+                            val binaryResult = NumberFormatter.decimalToBase(decimalResult, 2)
                             tvBinary.text = binaryResult
 
-                            val octalResult = decimalToBase(decimalResult, 8)
+                            val octalResult = NumberFormatter.decimalToBase(decimalResult, 8)
                             tvOctal.text = octalResult
 
                             tvHexadecimal.text = number
@@ -115,39 +130,6 @@ class MainActivity : AppCompatActivity() {
                 //Do Nothing
             }
         }
-
-        val decimalFragment = DecimalFragment()
-        val binaryFragment = BinaryFragment()
-
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.flFragment, decimalFragment)
-            commit()
-        }
-
-        btnDecimal.setOnClickListener {
-            supportFragmentManager.beginTransaction().apply {
-                replace(R.id.flFragment, decimalFragment)
-                addToBackStack(null)
-                commit()
-            }
-        }
-
-        btnBinary.setOnClickListener {
-            supportFragmentManager.beginTransaction().apply {
-                replace(R.id.flFragment, binaryFragment)
-                addToBackStack(null)
-                commit()
-            }
-        }
-
-
-
-
-
-
-
-
-
     }
 
     /**
@@ -155,86 +137,6 @@ class MainActivity : AppCompatActivity() {
         etNumber.text = ""
     }
     **/
-
-    //Convert Decimal System To Other Base System
-    /***
-    Used Long here max values generate results. Update code in else tag
-     ***/
-    private fun decimalToBase(number: String, base: Int): String {
-        var n = number.toLong()
-        var i: Int = 1
-
-        var baseResultString: String = ""
-        var remString: String = ""
-
-        var baseResult: Long = 0L
-        var remainder: Long = 0L
-
-        var result: String =""
-
-        while (n != 0L) {
-
-            if (n > 0) {
-                remString = (n % base).toString()
-                when (remString) {
-                    "10" -> remString = "A"
-                    "11" -> remString = "B"
-                    "12" -> remString = "C"
-                    "13" -> remString = "D"
-                    "14" -> remString = "E"
-                    "15" -> remString = "F"
-                }
-
-                n /= base
-                baseResultString += remString
-                i *= 10
-
-                result = baseResultString.reversed()
-            } else {
-
-                remainder = n % base
-                n /= base
-                baseResult += (remainder * i)
-                i *= 10
-
-                result = baseResult.toString()
-            }
-        }
-
-        return result
-    }
-
-    /***
-     * Used a combination of string and long. Thus Negative numbers doesn't work here i guess, should create a new algorithm after gaining extra knowledge
-     ***/
-
-    private fun baseToDecimal (base: Int, number: String): String {
-        var n: String = number
-        var lastChar: String = ""
-        var lastDigit: Int = 0
-        var baseResult: Double = 0.0
-        var i: Int = 0
-
-        for (x in 1..(n.length)) {
-            lastChar = n.takeLast(1)
-            n = n.dropLast(1)
-
-            when (lastChar) {
-                "A" -> lastChar = "10"
-                "B" -> lastChar = "11"
-                "C" -> lastChar = "12"
-                "D" -> lastChar = "13"
-                "E" -> lastChar = "14"
-                "F" -> lastChar = "15"
-            }
-
-            lastDigit = lastChar.toInt()
-            baseResult += (lastDigit * base.toDouble().pow(i.toDouble()))
-            i += 1
-        }
-
-        return baseResult.toInt().toString()
-    }
 }
 
 

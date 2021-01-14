@@ -9,9 +9,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_binary.*
 import kotlinx.android.synthetic.main.fragment_decimal.*
 
-/**
- * A simple [Fragment] subclass.
- */
+
 class BinaryFragment : Fragment(R.layout.fragment_binary) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -26,8 +24,7 @@ class BinaryFragment : Fragment(R.layout.fragment_binary) {
     }
 
     private fun appendOnClick (string: String) {
-        etNumber.append(string)
+        (activity as MainActivity).etNumber.append(string)
     }
-
 
 }

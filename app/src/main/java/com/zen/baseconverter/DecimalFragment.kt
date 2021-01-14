@@ -8,9 +8,7 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_decimal.*
 
-/**
- * A simple [Fragment] subclass.
- */
+
 class DecimalFragment : Fragment(R.layout.fragment_decimal) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -57,8 +55,7 @@ class DecimalFragment : Fragment(R.layout.fragment_decimal) {
     }
 
     private fun appendOnClick (string: String) {
-        etNumber.append(string)
+        (activity as MainActivity).etNumber.append(string)
     }
-
 
 }
