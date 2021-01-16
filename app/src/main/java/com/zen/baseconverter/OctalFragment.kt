@@ -2,68 +2,63 @@ package com.zen.baseconverter
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_decimal.*
+import kotlinx.android.synthetic.main.fragment_octal.*
 
+class OctalFragment : Fragment(R.layout.fragment_octal) {
 
-class DecimalFragment : Fragment(R.layout.fragment_decimal) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        ivDZero.setOnClickListener {
+        ivOZero.setOnClickListener {
             appendOnClick("0")
         }
 
-        ivDOne.setOnClickListener {
+        ivOOne.setOnClickListener {
             appendOnClick("1")
         }
 
-        ivDTwo.setOnClickListener {
+        ivOTwo.setOnClickListener {
             appendOnClick("2")
         }
 
-        ivDThree.setOnClickListener {
+        ivOThree.setOnClickListener {
             appendOnClick("3")
         }
 
-        ivDFour.setOnClickListener {
+        ivOFour.setOnClickListener {
             appendOnClick("4")
         }
 
-        ivDFive.setOnClickListener {
+        ivOFive.setOnClickListener {
             appendOnClick("5")
         }
 
-        ivDSix.setOnClickListener {
+        ivOSix.setOnClickListener {
             appendOnClick("6")
         }
 
-        ivDSeven.setOnClickListener {
+        ivOSeven.setOnClickListener {
             appendOnClick("7")
         }
 
-        ivDEight.setOnClickListener {
-            appendOnClick("8")
-        }
-
-        ivDNine.setOnClickListener {
-            appendOnClick("9")
-        }
-
-        ivDEqualTo.setOnClickListener {
+        ivOEqualTo.setOnClickListener {
 
             val number = (activity as MainActivity).etNumber.text.toString()
 
-            (activity as MainActivity).tvDecimal.text = number
+            val decimalResult = NumberFormatter.baseToDecimal(8, number)
+            (activity as MainActivity).tvDecimal.text = decimalResult
 
-            val binaryResult = NumberFormatter.decimalToBase(number, 2)
+            val binaryResult = NumberFormatter.decimalToBase(decimalResult, 2)
             (activity as MainActivity).tvBinary.text = binaryResult
 
-            val octalResult = NumberFormatter.decimalToBase(number, 8)
-            (activity as MainActivity).tvOctal.text = octalResult
+            (activity as MainActivity).tvOctal.text = number
 
-            val hexResult = NumberFormatter.decimalToBase(number, 16)
+            val hexResult = NumberFormatter.decimalToBase(decimalResult, 16)
             (activity as MainActivity).tvHexadecimal.text = hexResult
 
         }
@@ -72,5 +67,4 @@ class DecimalFragment : Fragment(R.layout.fragment_decimal) {
     private fun appendOnClick (string: String) {
         (activity as MainActivity).etNumber.append(string)
     }
-
 }

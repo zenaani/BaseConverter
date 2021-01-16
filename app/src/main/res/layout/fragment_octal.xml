@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DecimalFragment">
+    tools:context=".OctalFragment">
 
     <Button
-        android:id="@+id/ivDOne"
+        android:id="@+id/ivOOne"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:background="@drawable/btn_number"
@@ -16,12 +16,12 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_marginVertical="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ivDTwo"
+        app:layout_constraintEnd_toStartOf="@+id/ivOTwo"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/ivDTwo"
+        android:id="@+id/ivOTwo"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:background="@drawable/btn_number"
@@ -30,12 +30,12 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_marginVertical="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ivDThree"
+        app:layout_constraintEnd_toStartOf="@+id/ivOThree"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ivDOne" />
+        app:layout_constraintStart_toEndOf="@+id/ivOOne" />
 
     <Button
-        android:id="@+id/ivDThree"
+        android:id="@+id/ivOThree"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:background="@drawable/btn_number"
@@ -44,12 +44,12 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_marginVertical="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ivDZero"
+        app:layout_constraintEnd_toStartOf="@+id/ivOZero"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ivDTwo" />
+        app:layout_constraintStart_toEndOf="@+id/ivOTwo" />
 
     <Button
-        android:id="@+id/ivDFour"
+        android:id="@+id/ivOFour"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:background="@drawable/btn_number"
@@ -57,12 +57,12 @@
         android:textSize="24sp"
         style="?android:attr/borderlessButtonStyle"
         android:layout_marginVertical="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/ivDOne"
-        app:layout_constraintEnd_toEndOf="@+id/ivDOne"
-        app:layout_constraintStart_toStartOf="@+id/ivDOne" />
+        app:layout_constraintBottom_toTopOf="@+id/ivOOne"
+        app:layout_constraintEnd_toEndOf="@+id/ivOOne"
+        app:layout_constraintStart_toStartOf="@+id/ivOOne" />
 
     <Button
-        android:id="@+id/ivDFive"
+        android:id="@+id/ivOFive"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:background="@drawable/btn_number"
@@ -70,12 +70,12 @@
         android:textSize="24sp"
         style="?android:attr/borderlessButtonStyle"
         android:layout_marginVertical="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/ivDTwo"
-        app:layout_constraintEnd_toEndOf="@+id/ivDTwo"
-        app:layout_constraintStart_toStartOf="@+id/ivDTwo" />
+        app:layout_constraintBottom_toTopOf="@+id/ivOTwo"
+        app:layout_constraintEnd_toEndOf="@+id/ivOTwo"
+        app:layout_constraintStart_toStartOf="@+id/ivOTwo" />
 
     <Button
-        android:id="@+id/ivDSix"
+        android:id="@+id/ivOSix"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:background="@drawable/btn_number"
@@ -83,51 +83,25 @@
         android:textSize="24sp"
         style="?android:attr/borderlessButtonStyle"
         android:layout_marginVertical="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/ivDThree"
-        app:layout_constraintEnd_toEndOf="@+id/ivDThree"
-        app:layout_constraintStart_toStartOf="@+id/ivDThree" />
+        app:layout_constraintBottom_toTopOf="@+id/ivOThree"
+        app:layout_constraintEnd_toEndOf="@+id/ivOThree"
+        app:layout_constraintStart_toStartOf="@+id/ivOThree" />
 
     <Button
-        android:id="@+id/ivDSeven"
+        android:id="@+id/ivOSeven"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="75dp"
         android:layout_height="75dp"
+        android:layout_marginVertical="15dp"
         android:background="@drawable/btn_number"
         android:text="7"
         android:textSize="24sp"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_marginVertical="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/ivDFour"
-        app:layout_constraintEnd_toEndOf="@+id/ivDFour"
-        app:layout_constraintStart_toStartOf="@+id/ivDFour" />
+        app:layout_constraintBottom_toTopOf="@+id/ivOFive"
+        app:layout_constraintEnd_toEndOf="@+id/ivOFive"
+        app:layout_constraintStart_toStartOf="@+id/ivOFive" />
 
     <Button
-        android:id="@+id/ivDEight"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:background="@drawable/btn_number"
-        android:text="8"
-        android:textSize="24sp"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_marginVertical="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/ivDFive"
-        app:layout_constraintEnd_toEndOf="@+id/ivDFive"
-        app:layout_constraintStart_toStartOf="@+id/ivDFive" />
-
-    <Button
-        android:id="@+id/ivDNine"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:background="@drawable/btn_number"
-        android:text="9"
-        android:textSize="24sp"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_marginVertical="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/ivDSix"
-        app:layout_constraintEnd_toEndOf="@+id/ivDSix"
-        app:layout_constraintStart_toStartOf="@+id/ivDSix" />
-
-    <Button
-        android:id="@+id/ivDZero"
+        android:id="@+id/ivOZero"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:background="@drawable/btn_number"
@@ -137,10 +111,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ivDThree" />
+        app:layout_constraintStart_toEndOf="@+id/ivOThree" />
 
     <Button
-        android:id="@+id/ivDEqualTo"
+        android:id="@+id/ivOEqualTo"
         android:layout_width="75dp"
         android:layout_height="165dp"
         android:layout_marginBottom="1dp"
@@ -149,9 +123,9 @@
         android:textSize="24sp"
         style="?android:attr/borderlessButtonStyle"
         android:layout_marginVertical="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/ivDZero"
-        app:layout_constraintEnd_toEndOf="@+id/ivDZero"
-        app:layout_constraintStart_toStartOf="@+id/ivDZero" />
+        app:layout_constraintBottom_toTopOf="@+id/ivOZero"
+        app:layout_constraintEnd_toEndOf="@+id/ivOZero"
+        app:layout_constraintStart_toStartOf="@+id/ivOZero" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

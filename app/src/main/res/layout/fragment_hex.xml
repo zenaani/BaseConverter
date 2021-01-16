@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".HexFragment">
+
+    <Button
+        android:id="@+id/ivHOne"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/btn_number"
+        android:text="1"
+        android:textSize="24sp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginVertical="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ivHTwo"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/ivHTwo"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/btn_number"
+        android:text="2"
+        android:textSize="24sp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginVertical="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ivHThree"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ivHOne" />
+
+    <Button
+        android:id="@+id/ivHThree"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/btn_number"
+        android:text="3"
+        android:textSize="24sp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginVertical="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ivHZero"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ivHTwo" />
+
+    <Button
+        android:id="@+id/ivHFour"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/btn_number"
+        android:text="4"
+        android:textSize="24sp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginVertical="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/ivHOne"
+        app:layout_constraintEnd_toEndOf="@+id/ivHOne"
+        app:layout_constraintStart_toStartOf="@+id/ivHOne" />
+
+    <Button
+        android:id="@+id/ivHFive"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/btn_number"
+        android:text="5"
+        android:textSize="24sp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginVertical="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/ivHTwo"
+        app:layout_constraintEnd_toEndOf="@+id/ivHTwo"
+        app:layout_constraintStart_toStartOf="@+id/ivHTwo" />
+
+    <Button
+        android:id="@+id/ivHSix"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/btn_number"
+        android:text="6"
+        android:textSize="24sp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginVertical="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/ivHThree"
+        app:layout_constraintEnd_toEndOf="@+id/ivHThree"
+        app:layout_constraintStart_toStartOf="@+id/ivHThree" />
+
+    <Button
+        android:id="@+id/ivHSeven"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/btn_number"
+        android:text="7"
+        android:textSize="24sp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginVertical="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/ivHFour"
+        app:layout_constraintEnd_toEndOf="@+id/ivHFour"
+        app:layout_constraintStart_toStartOf="@+id/ivHFour" />
+
+    <Button
+        android:id="@+id/ivHEight"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/btn_number"
+        android:text="8"
+        android:textSize="24sp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginVertical="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/ivHFive"
+        app:layout_constraintEnd_toEndOf="@+id/ivHFive"
+        app:layout_constraintStart_toStartOf="@+id/ivHFive" />
+
+    <Button
+        android:id="@+id/ivHNine"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/btn_number"
+        android:text="9"
+        android:textSize="24sp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginVertical="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/ivHSix"
+        app:layout_constraintEnd_toEndOf="@+id/ivHSix"
+        app:layout_constraintStart_toStartOf="@+id/ivHSix" />
+
+    <Button
+        android:id="@+id/ivHZero"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/btn_number"
+        android:text="0"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginVertical="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ivHThree" />
+
+    <Button
+        android:id="@+id/ivHEqualTo"
+        android:layout_width="75dp"
+        android:layout_height="165dp"
+        android:layout_marginBottom="1dp"
+        android:background="@drawable/btn_number"
+        android:text="="
+        android:textSize="24sp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_marginVertical="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/ivHZero"
+        app:layout_constraintEnd_toEndOf="@+id/ivHZero"
+        app:layout_constraintStart_toStartOf="@+id/ivHZero" />
+
+    <Button
+        android:id="@+id/ivHA"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginVertical="15dp"
+        android:background="@drawable/btn_number"
+        android:text="A"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/ivHSeven"
+        app:layout_constraintEnd_toEndOf="@+id/ivHSeven"
+        app:layout_constraintStart_toStartOf="@+id/ivHSeven" />
+
+    <Button
+        android:id="@+id/ivHB"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginVertical="15dp"
+        android:background="@drawable/btn_number"
+        android:text="B"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/ivHEight"
+        app:layout_constraintEnd_toEndOf="@+id/ivHEight"
+        app:layout_constraintStart_toStartOf="@+id/ivHEight" />
+
+    <Button
+        android:id="@+id/ivHC"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginVertical="15dp"
+        android:background="@drawable/btn_number"
+        android:text="C"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/ivHNine"
+        app:layout_constraintEnd_toEndOf="@+id/ivHNine"
+        app:layout_constraintStart_toStartOf="@+id/ivHNine" />
+
+    <Button
+        android:id="@+id/ivHD"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginVertical="15dp"
+        android:background="@drawable/btn_number"
+        android:text="D"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/ivHEqualTo"
+        app:layout_constraintEnd_toEndOf="@+id/ivHEqualTo"
+        app:layout_constraintStart_toStartOf="@+id/ivHEqualTo" />
+
+    <Button
+        android:id="@+id/ivHE"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginVertical="15dp"
+        android:background="@drawable/btn_number"
+        android:text="E"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/ivHB"
+        app:layout_constraintEnd_toEndOf="@+id/ivHB"
+        app:layout_constraintStart_toStartOf="@+id/ivHB" />
+
+    <Button
+        android:id="@+id/ivHF"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginVertical="15dp"
+        android:background="@drawable/btn_number"
+        android:text="F"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/ivHC"
+        app:layout_constraintEnd_toEndOf="@+id/ivHC"
+        app:layout_constraintStart_toStartOf="@+id/ivHC" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

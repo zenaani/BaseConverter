@@ -6,9 +6,11 @@ import android.widget.AdapterView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_binary.*
 import kotlin.math.pow
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -26,15 +28,30 @@ class MainActivity : AppCompatActivity() {
 
         val decimalFragment = DecimalFragment()
         val binaryFragment = BinaryFragment()
+        val octalFragment = OctalFragment()
+        val hexFragment = HexFragment()
 
         spFrom.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                Toast.makeText(this@MainActivity, "You selected ${adapterView?.getItemAtPosition(position).toString()}", Toast.LENGTH_SHORT).show()
+            override fun onItemSelected(
+                adapterView: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                Toast.makeText(
+                    this@MainActivity,
+                    "You selected ${adapterView?.getItemAtPosition(position).toString()}",
+                    Toast.LENGTH_SHORT
+                ).show()
 
                 when (adapterView?.getItemAtPosition(position).toString()) {
 
                     "Decimal" -> {
-                        Toast.makeText(this@MainActivity, "Shit! You got the decimal logic brah!", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Shit! You got the decimal logic brah!",
+                            Toast.LENGTH_LONG
+                        ).show()
 
                         supportFragmentManager.beginTransaction().apply {
                             replace(R.id.flFragment, decimalFragment)
@@ -43,69 +60,47 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                     "Binary" -> {
-                        Toast.makeText(this@MainActivity, "Hell Yeah! You made it to binary", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Hell Yeah! You made it to binary",
+                            Toast.LENGTH_LONG
+                        ).show()
 
                         supportFragmentManager.beginTransaction().apply {
                             replace(R.id.flFragment, binaryFragment)
                             addToBackStack(null)
                             commit()
                         }
-
-                        btnConvert.setOnClickListener {
-                            val number = etNumber.text.toString()
-
-                            val decimalResult = NumberFormatter.baseToDecimal(2, number)
-                            tvDecimal.text = decimalResult
-
-                            tvBinary.text = number
-
-                            val octalResult = NumberFormatter.decimalToBase(decimalResult, 8)
-                            tvOctal.text = octalResult
-
-                            val hexResult = NumberFormatter.decimalToBase(decimalResult, 16)
-                            tvHexadecimal.text = hexResult
-                        }
-
                     }
                     "Octal" -> {
-                        Toast.makeText(this@MainActivity, "Cool! Its Octal", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@MainActivity, "Cool! Its Octal", Toast.LENGTH_LONG)
+                            .show()
 
-                        btnConvert.setOnClickListener {
-                            val number = etNumber.text.toString()
-
-                            val decimalResult = NumberFormatter.baseToDecimal(8, number)
-                            tvDecimal.text = decimalResult
-
-                            val binaryResult = NumberFormatter.decimalToBase(decimalResult, 2)
-                            tvBinary.text = binaryResult
-
-                            tvOctal.text = number
-
-                            val hexResult = NumberFormatter.decimalToBase(decimalResult, 16)
-                            tvHexadecimal.text = hexResult
+                        supportFragmentManager.beginTransaction().apply {
+                            replace(R.id.flFragment, octalFragment)
+                            addToBackStack(null)
+                            commit()
                         }
-
                     }
                     "Hexadecimal" -> {
-                        Toast.makeText(this@MainActivity, "Finally you did it!!!!! Dens Keli", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Finally you did it!!!!! Dens Keli",
+                            Toast.LENGTH_LONG
+                        ).show()
 
-                        btnConvert.setOnClickListener {
-                            val number = etNumber.text.toString()
-
-                            val decimalResult = NumberFormatter.baseToDecimal(16, number)
-                            tvDecimal.text = decimalResult
-
-                            val binaryResult = NumberFormatter.decimalToBase(decimalResult, 2)
-                            tvBinary.text = binaryResult
-
-                            val octalResult = NumberFormatter.decimalToBase(decimalResult, 8)
-                            tvOctal.text = octalResult
-
-                            tvHexadecimal.text = number
+                        supportFragmentManager.beginTransaction().apply {
+                            replace(R.id.flFragment, hexFragment)
+                            addToBackStack(null)
+                            commit()
                         }
                     }
                     else -> {
-                        Toast.makeText(this@MainActivity, "I guess no one's gonna see this", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            this@MainActivity,
+                            "I guess no one's gonna see this",
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
                 }
             }
@@ -115,12 +110,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-    /**
-    private fun clear () {
-        etNumber.text = ""
-    }
-    **/
 }
 
 
