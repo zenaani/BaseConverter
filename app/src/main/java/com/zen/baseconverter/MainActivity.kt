@@ -1,13 +1,15 @@
 package com.zen.baseconverter
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_binary.*
-import kotlin.math.pow
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,6 +40,11 @@ class MainActivity : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
+
+                (view as TextView).apply {
+                    setTextColor(Color.WHITE)
+                }
+
                 Toast.makeText(
                     this@MainActivity,
                     "You selected ${adapterView?.getItemAtPosition(position).toString()}",
