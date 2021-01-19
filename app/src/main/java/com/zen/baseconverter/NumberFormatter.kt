@@ -28,21 +28,31 @@ object NumberFormatter {
 
         while (n != 0L) {
 
-            remString = (n % base).toString()
-            when (remString) {
-                "10" -> remString = "A"
-                "11" -> remString = "B"
-                "12" -> remString = "C"
-                "13" -> remString = "D"
-                "14" -> remString = "E"
-                "15" -> remString = "F"
+            if (n > 0) {
+                remString = (n % base).toString()
+                when (remString) {
+                    "10" -> remString = "A"
+                    "11" -> remString = "B"
+                    "12" -> remString = "C"
+                    "13" -> remString = "D"
+                    "14" -> remString = "E"
+                    "15" -> remString = "F"
+                }
+
+                n /= base
+                baseResultString += remString
+                i *= 10
+
+                result = baseResultString.reversed()
+            }  else {
+
+                remainder = n % base
+                n /= base
+                baseResult += (remainder * i)
+                i *= 10
+
+                result = baseResult.toString()
             }
-
-            n /= base
-            baseResultString += remString
-            i *= 10
-
-            result = baseResultString.reversed()
         }
 
         return result
@@ -79,7 +89,11 @@ object NumberFormatter {
             i += 1
         }
 
-        return baseResult.toString()
+        return baseResult.toDouble().toString()
+
+        // baseResult.toInt().toString() works perfectly
+        // baseResult.toDouble().toString() doesn't work
+        // baseResult.toString() doesn't work
     }
 
 
@@ -131,6 +145,42 @@ object NumberFormatter {
     }
     **/
 
+    //Updated Code
+/**
+    fun decimalToBase(number: String, base: Int): String {
+        var n = number.toLong()
+        var i: Int = 1
+
+        var baseResultString: String = ""
+        var remString: String = ""
+
+        var baseResult: Long = 0L
+        var remainder: Long = 0L
+
+        var result: String =""
+
+        while (n != 0L) {
+
+            remString = (n % base).toString()
+            when (remString) {
+                "10" -> remString = "A"
+                "11" -> remString = "B"
+                "12" -> remString = "C"
+                "13" -> remString = "D"
+                "14" -> remString = "E"
+                "15" -> remString = "F"
+            }
+
+            n /= base
+            baseResultString += remString
+            i *= 10
+
+            result = baseResultString.reversed()
+        }
+
+        return result
+    }
+**/
 
 
     //UnUsed Code
