@@ -89,7 +89,7 @@ object NumberFormatter {
             i += 1
         }
 
-        return baseResult.toDouble().toString()
+        return baseResult.toInt().toString()
 
         // baseResult.toInt().toString() works perfectly
         // baseResult.toDouble().toString() doesn't work
