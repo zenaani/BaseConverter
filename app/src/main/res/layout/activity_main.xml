@@ -1,46 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#4AC6F1"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical">
 
     <!-- Invert the result box to fit in with boomers -->
 
 
-    <Spinner
-        android:id="@+id/spFrom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:background="@drawable/base_background"
-        android:backgroundTint="@color/light_blue"
-        android:entries="@array/Base"
-        android:theme="@style/Spinner"
-        android:popupBackground="@drawable/base_background"
-        app:layout_constraintBottom_toBottomOf="@+id/etNumber"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/etNumber" />
 
-    <EditText
-        android:id="@+id/etNumber"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:text="0"
-        android:textAlignment="textEnd"
-        android:textColor="@color/white"
-        android:textSize="50sp"
-        android:singleLine="true"
-        app:layout_constraintBottom_toTopOf="@+id/flFragment"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/spFrom"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
+        android:layout_weight="0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/etNumber"
@@ -137,11 +112,16 @@
             android:background="@drawable/base_background"
             android:paddingHorizontal="20dp"
             android:paddingVertical="10dp"
-            android:maxWidth="250dp"
             android:text="C"
             android:textAlignment="textEnd"
             android:textColor="@color/white"
             android:textSize="25sp"
+            android:maxWidth="250dp"
+            android:layout_marginStart="100dp"
+
+            android:scrollbars = "horizontal"
+            android:maxLines="1"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvOctal" />
 
@@ -169,6 +149,7 @@
             android:paddingHorizontal="20dp"
             android:paddingVertical="10dp"
             android:text="K"
+            android:animateLayoutChanges="true"
             android:textAlignment="textEnd"
             android:textColor="@color/white"
             android:textSize="25sp"
@@ -178,14 +159,56 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    <FrameLayout
-        android:id="@+id/flFragment"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="0">
+
+        <Spinner
+            android:id="@+id/spFrom"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_margin="15dp"
+            android:background="@drawable/base_background"
+            android:backgroundTint="@color/light_blue"
+            android:entries="@array/Base"
+            android:popupBackground="@drawable/base_background"
+            android:theme="@style/Spinner"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etNumber" />
+
+        <TextView
+            android:id="@+id/etNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:singleLine="true"
+            android:hint="0"
+            android:textColorHint="@color/white"
+            android:textAlignment="textEnd"
+            android:textColor="@color/white"
+            android:textSize="50sp"
+            app:layout_constraintBottom_toTopOf="@+id/spFrom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <FrameLayout
+        android:layout_weight="3"
+        android:id="@+id/flFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNumber" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
 
 

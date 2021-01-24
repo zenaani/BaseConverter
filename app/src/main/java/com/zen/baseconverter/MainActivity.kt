@@ -7,6 +7,7 @@ import android.widget.AdapterView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat.animate
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_binary.*
 
@@ -25,6 +26,12 @@ class MainActivity : AppCompatActivity() {
 
          * Not Compatible for negative numbers - Not Fixed (Should try 1s and 2s complement)
          * New algo for negative nos in decimalToBase 2s complement (Mainly for baseToDecimal since it crashes
+         *
+         * tvDecimal.animate().apply {
+                duration = 1000
+                alpha(0.5f)
+                translationXBy(200f)
+            }
 
          **/
 

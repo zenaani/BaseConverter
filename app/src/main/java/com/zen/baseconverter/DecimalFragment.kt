@@ -67,10 +67,13 @@ class DecimalFragment : Fragment(R.layout.fragment_decimal) {
             (activity as MainActivity).tvHexadecimal.text = hexResult
 
         }
+
+        ivDClear.setOnClickListener {
+            (activity as MainActivity).etNumber.text = ""
+        }
     }
 
     private fun appendOnClick (string: String) {
         (activity as MainActivity).etNumber.append(string)
     }
-
 }
