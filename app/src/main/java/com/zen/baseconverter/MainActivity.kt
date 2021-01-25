@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -67,6 +68,9 @@ class MainActivity : AppCompatActivity() {
                             Toast.LENGTH_LONG
                         ).show()
 
+                        clearAllValues()
+
+
                         supportFragmentManager.beginTransaction().apply {
                             replace(R.id.flFragment, decimalFragment)
                             addToBackStack(null)
@@ -80,6 +84,8 @@ class MainActivity : AppCompatActivity() {
                             Toast.LENGTH_LONG
                         ).show()
 
+                        clearAllValues()
+
                         supportFragmentManager.beginTransaction().apply {
                             replace(R.id.flFragment, binaryFragment)
                             addToBackStack(null)
@@ -89,6 +95,8 @@ class MainActivity : AppCompatActivity() {
                     "Octal" -> {
                         Toast.makeText(this@MainActivity, "Cool! Its Octal", Toast.LENGTH_LONG)
                             .show()
+
+                        clearAllValues()
 
                         supportFragmentManager.beginTransaction().apply {
                             replace(R.id.flFragment, octalFragment)
@@ -102,6 +110,8 @@ class MainActivity : AppCompatActivity() {
                             "Finally you did it!!!!! Dens Keli",
                             Toast.LENGTH_LONG
                         ).show()
+
+                        clearAllValues()
 
                         supportFragmentManager.beginTransaction().apply {
                             replace(R.id.flFragment, hexFragment)
@@ -124,6 +134,16 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    fun clearAllValues () {
+        etNumber.text = ""
+        tvDecimal.text = ""
+        tvBinary.text = ""
+        tvOctal.text = ""
+        tvHexadecimal.text = ""
+    }
+
+
 }
 
 
